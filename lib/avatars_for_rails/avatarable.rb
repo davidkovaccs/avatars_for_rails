@@ -36,6 +36,9 @@ module AvatarsForRails
 
       @avatar_tmp_basename = File.basename(logo.queued_for_write[:original].path)
 
+      t_path = File.join(AvatarsForRails.tmp_path, @avatar_tmp_basename)
+      FileUtils.chmod(0644, t_path)
+
       dimensions = avatar_tmp_file_dimensions
 
       return if dimensions.first == dimensions.last 
